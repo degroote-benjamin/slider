@@ -98,7 +98,9 @@ textarea {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
-
+.red {
+  background: red;
+}
 
 .img{
   height: 200px;
@@ -112,14 +114,20 @@ textarea {
 
 .calcul{
   background: blue;
-  padding-bottom: 12px;
+  padding-bottom: 25px;
   border-radius: 10px;
   width: 217px;
-  height: 276px;
+  height: 320px;
 }
 
 .calcul p{
  background: white;
+ border-radius: 4px;
+}
+
+.retour{
+  border : 1px solid white;
+  height: 200px;
 }
 
 @media (min-width:720px) {
