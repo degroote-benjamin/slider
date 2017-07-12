@@ -5,7 +5,8 @@
 // On load page , slider is on
   document.addEventListener("load", function(){
     slider()
-  });
+  }
+);
 
 // function slider
 function slider() {
