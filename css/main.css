@@ -99,9 +99,27 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
+
 .img{
   height: 200px;
   width: 200px;
+  display: none;
+}
+
+.active{
+  display: block;
+}
+
+.calcul{
+  background: blue;
+  padding-bottom: 12px;
+  border-radius: 10px;
+  width: 217px;
+  height: 276px;
+}
+
+.calcul p{
+ background: white;
 }
 
 @media (min-width:720px) {
