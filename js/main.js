@@ -44,6 +44,7 @@ for (let i = 0; i < calcul.length; i++) {
 
 
         // first result
+        if(total===0){
         if (tabcalcul.length === 1) {
             if (tabcalcul[0] == "." || tabcalcul[0] == "+" || tabcalcul[0] == "-" || tabcalcul[0] == "/" || tabcalcul[0] == "*") {
                 resultat.innerHTML = "error"
@@ -65,16 +66,47 @@ for (let i = 0; i < calcul.length; i++) {
 
         if (tabcalcul.length === 3) {
             if (tabcalcul[1] === "+") {
-                total = Number(tabcalcul[0]) + Number(tabcalcul[2]) + total
+                total = Number(tabcalcul[0]) + Number(tabcalcul[2])
             } else if (tabcalcul[1] === "-") {
-                total = Number(tabcalcul[0]) - Number(tabcalcul[2]) + total
+                total = Number(tabcalcul[0]) - Number(tabcalcul[2])
             } else if (tabcalcul[1] === "*") {
-                total = Number(tabcalcul[0]) * Number(tabcalcul[2]) + total
+                total = Number(tabcalcul[0]) * Number(tabcalcul[2])
             } else if (tabcalcul[1] === "/") {
-                total = Number(tabcalcul[0]) / Number(tabcalcul[2]) + total
+                total = Number(tabcalcul[0]) / Number(tabcalcul[2])
+            }
+            else if (tabcalcul[1] === ".") {
+                total = Number(Number(tabcalcul[0]) +"."+  Number(tabcalcul[2]))
             }
             resultat.innerHTML = total
-              tabcalcul.length = 0
+            tabcalcul.length = 0
         }
+      }
+      else if(total !==0){
+        if (tabcalcul.length === 1) {
+            if (tabcalcul[0] == "+" || tabcalcul[0] == "-" || tabcalcul[0] == "/" || tabcalcul[0] == "*") {
+               resultat.innerHTML = total
+            } else {
+              resultat.innerHTML = "error"
+              tabcalcul.length = 0
+              total = 0
+            }
+        }
+
+
+        if (tabcalcul.length === 2) {
+          if (tabcalcul[0] === "+") {
+              total = total + Number(tabcalcul[1])
+          } else if (tabcalcul[0] === "-") {
+              total = total - Number(tabcalcul[1])
+          } else if (tabcalcul[0] === "*") {
+              total = total * Number(tabcalcul[1])
+          } else if (tabcalcul[0] === "/") {
+              total = total / Number(tabcalcul[1])
+          }
+          resultat.innerHTML = total
+          tabcalcul.length = 0
+        }
+
+      }
     })
 }
