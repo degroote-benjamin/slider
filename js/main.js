@@ -38,6 +38,12 @@ if(tabcalcul.length ===1)
   total = tabcalcul[0]
 }
 
+if(tabcalcul.length ===2){
+  if(tabcalcul[1] !== "." || tabcalcul[1] !== "+" || tabcalcul[1] !== "-" || tabcalcul[1] !== "/" || tabcalcul[1] !== "*"){
+    total = "error"
+  }
+}
+
 if(tabcalcul.length ===3){
   if(tabcalcul[1] === "+"){
     total = Number(tabcalcul[0]) + Number(tabcalcul[2]) + total
