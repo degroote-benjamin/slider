@@ -7,18 +7,20 @@ var tabtotal = []
 var total = 0
 var resultat = document.getElementById("resultatcalcul")
 resultat.innerHTML = 0
+
 // On load page , slider is on
 document.addEventListener("load", function() {
     slider()
 });
 
+// previous button
 document.getElementById("gauche").addEventListener("click", function() {
-   --i
-   setTimeout(slider,0)
+slider(-1)
 });
 
+// next button
 document.getElementById("droite").addEventListener("click", function() {
-    setTimeout(slider,0)
+    setTimeout(slider, 0)
 });
 
 // function slider
@@ -26,11 +28,16 @@ function slider() {
     for (let y = 0; y < img.length; y++) {
         img[y].style.display = "none"
     }
-    if (i >=img.length || i <0 ) {
-        i = 0
+    if (i >= 0 && i !== img.length) {
+      img[i].style.display = "block"
+      i++
     }
-    img[i].style.display = "block"
-    i++
+    else{
+      i=0
+      img[i].style.display = "block"
+      i++
+    }
+
 }
 
 // function slider all 3sec
@@ -55,68 +62,66 @@ for (let i = 0; i < calcul.length; i++) {
 
 
         // first result
-        if(total===0){
-        if (tabcalcul.length === 1) {
-            if (tabcalcul[0] == "." || tabcalcul[0] == "+" || tabcalcul[0] == "-" || tabcalcul[0] == "/" || tabcalcul[0] == "*") {
-                resultat.innerHTML = "error"
+        if (total === 0) {
+            if (tabcalcul.length === 1) {
+                if (tabcalcul[0] == "." || tabcalcul[0] == "+" || tabcalcul[0] == "-" || tabcalcul[0] == "/" || tabcalcul[0] == "*") {
+                    resultat.innerHTML = "error"
+                    tabcalcul.length = 0
+                    total = 0
+                } else {
+                    resultat.innerHTML = tabcalcul[0]
+                }
+            }
+
+
+            if (tabcalcul.length === 2) {
+                if (tabcalcul[1] == "." || tabcalcul[1] == "+" || tabcalcul[1] == "-" || tabcalcul[1] == "/" || tabcalcul[1] == "*") {
+                    resultat.innerHTML = tabcalcul[0]
+                } else {
+                    resultat.innerHTML = "error"
+                }
+            }
+
+            if (tabcalcul.length === 3) {
+                if (tabcalcul[1] === "+") {
+                    total = Number(tabcalcul[0]) + Number(tabcalcul[2])
+                } else if (tabcalcul[1] === "-") {
+                    total = Number(tabcalcul[0]) - Number(tabcalcul[2])
+                } else if (tabcalcul[1] === "*") {
+                    total = Number(tabcalcul[0]) * Number(tabcalcul[2])
+                } else if (tabcalcul[1] === "/") {
+                    total = Number(tabcalcul[0]) / Number(tabcalcul[2])
+                } else if (tabcalcul[1] === ".") {
+                    total = Number(Number(tabcalcul[0]) + "." + Number(tabcalcul[2]))
+                }
+                resultat.innerHTML = total
                 tabcalcul.length = 0
-                total = 0
-            } else {
-                resultat.innerHTML = tabcalcul[0]
             }
-        }
-
-
-        if (tabcalcul.length === 2) {
-            if (tabcalcul[1] == "." || tabcalcul[1] == "+" || tabcalcul[1] == "-" || tabcalcul[1] == "/" || tabcalcul[1] == "*") {
-                resultat.innerHTML = tabcalcul[0]
-            } else {
-                resultat.innerHTML = "error"
+        } else if (total !== 0) {
+            if (tabcalcul.length === 1) {
+                if (tabcalcul[0] == "+" || tabcalcul[0] == "-" || tabcalcul[0] == "/" || tabcalcul[0] == "*") {
+                    resultat.innerHTML = total
+                } else {
+                    resultat.innerHTML = "error"
+                    tabcalcul.length = 0
+                }
             }
-        }
 
-        if (tabcalcul.length === 3) {
-            if (tabcalcul[1] === "+") {
-                total = Number(tabcalcul[0]) + Number(tabcalcul[2])
-            } else if (tabcalcul[1] === "-") {
-                total = Number(tabcalcul[0]) - Number(tabcalcul[2])
-            } else if (tabcalcul[1] === "*") {
-                total = Number(tabcalcul[0]) * Number(tabcalcul[2])
-            } else if (tabcalcul[1] === "/") {
-                total = Number(tabcalcul[0]) / Number(tabcalcul[2])
+
+            if (tabcalcul.length === 2) {
+                if (tabcalcul[0] === "+") {
+                    total = total + Number(tabcalcul[1])
+                } else if (tabcalcul[0] === "-") {
+                    total = total - Number(tabcalcul[1])
+                } else if (tabcalcul[0] === "*") {
+                    total = total * Number(tabcalcul[1])
+                } else if (tabcalcul[0] === "/") {
+                    total = total / Number(tabcalcul[1])
+                }
+                resultat.innerHTML = total
+                tabcalcul.length = 0
             }
-            else if (tabcalcul[1] === ".") {
-                total = Number(Number(tabcalcul[0]) +"."+  Number(tabcalcul[2]))
-            }
-            resultat.innerHTML = total
-            tabcalcul.length = 0
-        }
-      }
-      else if(total !==0){
-        if (tabcalcul.length === 1) {
-            if (tabcalcul[0] == "+" || tabcalcul[0] == "-" || tabcalcul[0] == "/" || tabcalcul[0] == "*") {
-               resultat.innerHTML = total
-            } else {
-              resultat.innerHTML = "error"
-              tabcalcul.length = 0
-            }
-        }
 
-
-        if (tabcalcul.length === 2) {
-          if (tabcalcul[0] === "+") {
-              total = total + Number(tabcalcul[1])
-          } else if (tabcalcul[0] === "-") {
-              total = total - Number(tabcalcul[1])
-          } else if (tabcalcul[0] === "*") {
-              total = total * Number(tabcalcul[1])
-          } else if (tabcalcul[0] === "/") {
-              total = total / Number(tabcalcul[1])
-          }
-          resultat.innerHTML = total
-          tabcalcul.length = 0
         }
-
-      }
     })
 }
