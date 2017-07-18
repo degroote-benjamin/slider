@@ -2,11 +2,6 @@
 var i = 0
 var img = document.getElementsByClassName("img")
 
-// On load page , slider is on
-document.addEventListener("load", function() {
-    slider()
-});
-
 // previous button
 document.getElementById("gauche").addEventListener("click", function() {
 slider(-1)
@@ -32,5 +27,5 @@ function slider() {
           i++
 }
 
-// function slider all 3sec
+// function slider all 1.5sec
 setInterval(slider, 1500);
